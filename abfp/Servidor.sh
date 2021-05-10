@@ -69,7 +69,7 @@ echo "NUM_FILES: $NUM"
 for NUMBER in `seq $NUM`; do
 
 
-echo "(9) LISTEN FILE_NAME"
+echo "(9a) LISTEN FILE_NAME"
 
 FILE_NAME=`nc -l -p $PORT`
 
@@ -85,12 +85,14 @@ if [ "$PREFIX" != "FILE_NAME" ]; then
 	exit 3
 fi
 
+echo "(9b) NAME CHECKUP"
+
 TEMP_MD5=`echo $NAME | md5sum | cut -d " " -f 1`
 
 echo $NAME_MD5 $TEMP_MD5
 
 if [ "$NAME_MD5" != "$TEMP_MD5" ]; then
-	echo "Error: MD5 incorrect"
+	echo "Error en el MD5"
 	sleep 1
 	echo "KO_FILE_NAME_MD5" | nc -q 1 $IP_CLIENT $PORT
 	exit 4

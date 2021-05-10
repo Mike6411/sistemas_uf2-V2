@@ -88,5 +88,5 @@ echo "(15) LISTEN DATA RESPONSE"
 RESPONSE=`nc -l -p $PORT`
 
 echo "(18) DESPEDIDA"
-echo "GoodBye" | nc -q 1 $IP_SERVER $PORT
+echo "GoodBye"
 exit 0
